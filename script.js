@@ -1,4 +1,3 @@
-
 const day = document.getElementById('day');
 const month = document.getElementById('month');
 const year = document.getElementById('year');
@@ -7,9 +6,13 @@ const dayError = document.getElementById('day-error');
 const monthError = document.getElementById('month-error');
 const yearError = document.getElementById('year-error');
 
-day.addEventListener('input', validateDay);
-month.addEventListener('input', validateMonth);
-year.addEventListener('input', validateYear);
+const yearsTotal = document.querySelector('.years-total');
+const monthsTotal = document.querySelector('.months-total');
+const daysTotal = document.querySelector('.days-total');
+
+day.addEventListener('input', checkDayInput);
+month.addEventListener('input', checkMonthInput);
+year.addEventListener('input', checkYearInput);
 
 
 const arrowButton = document.getElementById('arrow');
@@ -23,9 +26,7 @@ arrowButton.addEventListener('mouseleave', () => {
 
 arrowButton.addEventListener('click', getAge);
 
-
-function validateDay(){
-
+function checkDayInput(){
     const inputValue = day.value;
 
     if (inputValue > 31) {
@@ -35,32 +36,51 @@ function validateDay(){
     }
 }
 
-function validateMonth(){
-       
+function checkMonthInput(){
     const inputValue = month.value;
 
     if (inputValue > 12) {
-      dayError.innerHTML = 'Must be a valid month';
+      monthError.innerHTML = 'Must be a valid month';
     } else {
-      dayError.innerHTML = '';
+      monthError.innerHTML = '';
     }
 }
 
-function validateYear(){
+function checkYearInput(){
     const inputValue = year.value;
     const currentDate =  new Date();
     const currentYear = currentDate.getFullYear();
 
     if (inputValue > currentYear) {
-      dayError.innerHTML = `Year can't be greater than ${currentYear}`;
+      yearError.innerHTML = `Year can't be greater than ${currentYear}`;
     } else {
-      dayError.innerHTML = '';
+      yearError.innerHTML = '';
     }
 }
 
+// function checkValidYear(year){
+//     const date = new Date();
+//     return (year < date.getFullYear());
+// }
+
+function checkForEmptyInputs(date){
+    return isNaN(date) 
+}
+
+function validateMonthDays(day, month, year) {
+    const date = new Date(year, month -1, day);
+    return (date.getFullYear() === year && 
+    date.getMonth() === month - 1 && 
+    date.getDate() === day);
+}
+
+function isYearBeforeCurrentYear(yearInput) {
+    const currentYear = new Date().getFullYear();
+    return (yearInput <= currentYear);
+}
 
 
-function getAge() {
+function validateDate() {
 
     const dayValue = parseInt(day.value, 10);
     const monthValue = parseInt(month.value, 10);
@@ -76,31 +96,26 @@ function getAge() {
     if(emptyMonth) monthError.innerHTML = 'This field is required';
     if(emptyYear) yearError.innerHTML = 'This field is required';
 
-    const validDate =  checkValidDate(dayValue, monthValue, yearValue);
-    const validYear =  checkValidYear(yearValue);
+    const validMonthDay =  validateMonthDays(dayValue, monthValue, yearValue);
+    const yearBeforeCurrent = isYearBeforeCurrentYear(yearValue); 
 
-    if (validDate && validYear){
-        //alert("go head");
-    }else{
-        //alert("try again");
+    if (!emptyDay && !emptyMonth && !emptyYear && validMonthDay && yearBeforeCurrent){
+        return true;
+    }    
+    return false;
+
+}
+
+
+function getAge(){
+    const isDateValid =  validateDate();
+    if (isDateValid) {
+        yearsTotal.innerHTML = "Calculate Years";
+        monthsTotal.innerHTML = "Calculate Months";
+        daysTotal.innerHTML = "calculate Days";
     }
-    const yearsTotal = document.querySelector('.years-total');
-    yearsTotal.innerHTML = day;
-  }
+}
 
 
-  function checkForEmptyInputs(date){
-    return isNaN(date) 
-  }
 
-  function checkValidDate(day, month, year) {
-    const date = new Date(year, month -1, day);
-    return (date.getFullYear() === year && 
-    date.getMonth() === month - 1 && 
-    date.getDate() === day);
-  }
 
-  function checkValidYear(year){
-    const date = new Date();
-    return (year < date.getFullYear());
-  }
