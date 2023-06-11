@@ -2,6 +2,8 @@ const day = document.getElementById('day');
 const month = document.getElementById('month');
 const year = document.getElementById('year');
 
+const currentDate = new Date();
+
 const dayError = document.getElementById('day-error');
 const monthError = document.getElementById('month-error');
 const yearError = document.getElementById('year-error');
@@ -48,7 +50,6 @@ function checkMonthInput(){
 
 function checkYearInput(){
     const inputValue = year.value;
-    const currentDate =  new Date();
     const currentYear = currentDate.getFullYear();
 
     if (inputValue > currentYear) {
@@ -58,25 +59,20 @@ function checkYearInput(){
     }
 }
 
-// function checkValidYear(year){
-//     const date = new Date();
-//     return (year < date.getFullYear());
-// }
-
 function checkForEmptyInputs(date){
     return isNaN(date) 
 }
 
-function validateMonthDays(day, month, year) {
-    const date = new Date(year, month -1, day);
-    return (date.getFullYear() === year && 
-    date.getMonth() === month - 1 && 
-    date.getDate() === day);
-}
-
-function isYearBeforeCurrentYear(yearInput) {
-    const currentYear = new Date().getFullYear();
-    return (yearInput <= currentYear);
+function validateDte(day, month, year) {
+    const validMonthDay = new Date(year, month -1, day);
+    if (validMonthDay.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day){
+        if('date is past'){
+            return true;
+        }
+    }else{
+        dayError.innerHTML = 'must be a valid date';
+        return false;
+    }
 }
 
 
@@ -85,7 +81,6 @@ function validateDate() {
     const dayValue = parseInt(day.value, 10);
     const monthValue = parseInt(month.value, 10);
     const yearValue = parseInt(year.value, 10);
-
     //Validate that date is a valid date
 
     const emptyDay = checkForEmptyInputs(dayValue);
@@ -96,8 +91,7 @@ function validateDate() {
     if(emptyMonth) monthError.innerHTML = 'This field is required';
     if(emptyYear) yearError.innerHTML = 'This field is required';
 
-    const validMonthDay =  validateMonthDays(dayValue, monthValue, yearValue);
-    const yearBeforeCurrent = isYearBeforeCurrentYear(yearValue); 
+    const validMonthDay =  validateDte(dayValue, monthValue, yearValue);
 
     if (!emptyDay && !emptyMonth && !emptyYear && validMonthDay && yearBeforeCurrent){
         return true;
@@ -106,13 +100,40 @@ function validateDate() {
 
 }
 
-
 function getAge(){
     const isDateValid =  validateDate();
     if (isDateValid) {
-        yearsTotal.innerHTML = "Calculate Years";
-        monthsTotal.innerHTML = "Calculate Months";
-        daysTotal.innerHTML = "calculate Days";
+
+        const birthDate = new Date(year.value, month.value - 1, day.value);
+        console.log(currentDate.getFullYear());
+        console.log(birthDate.getFullYear());
+        
+        let ageInYears = currentDate.getFullYear() - birthDate.getFullYear();
+
+        let ageInMonths = currentDate.getMonth() - birthDate.getMonth();
+        if (ageInMonths < 0) {
+            ageInYears--;
+            ageInMonths += 12;
+        }
+
+        let ageInDays = currentDate.getDate() - day.value;
+        if (ageInDays < 0) {
+            const tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, day.value);
+            ageInMonths--;
+            ageInDays = Math.floor((currentDate - tempDate) / (1000 * 60 * 60 * 24));
+        if (ageInMonths < 0) {
+            ageInYears--;
+            ageInMonths += 12;
+        }
+        }
+        
+        yearsTotal.innerHTML = ageInYears;
+        monthsTotal.innerHTML = ageInMonths;
+        daysTotal.innerHTML = ageInDays;
+    }else {
+        yearsTotal.innerHTML = "-- years";
+        monthsTotal.innerHTML = "-- months";
+        daysTotal.innerHTML = "-- days";
     }
 }
 
