@@ -60,6 +60,6 @@ During the development of the Age Calculator project, I acquired valuable knowle
 This Age Calculator project was created by **Juan David Rodriguez**.
 
 - GitHub: [JD-R0driguez](https://github.com/JD-R0driguez)
-- LinkedIn: [Juan David Rodriguez](https://www.linkedin.com/in/juandavid-rodriguez/)
+- LinkedIn: [JD Rodriguez](https://www.linkedin.com/in/juandavid-rodriguez/)
 
 Feel free to connect with me on the platforms above. I'm always excited to collaborate on new projects and engage with the developer community.
