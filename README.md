@@ -55,16 +55,11 @@ During the development of the Age Calculator project, I acquired valuable knowle
 
 - **Data Object Validations and Manipulations:** I became adept at performing data object validations and manipulations, including checking for empty fields and accurately calculating age in years, months, and days.
 
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
 ## Author
 
 This Age Calculator project was created by **Juan David Rodriguez**.
 
-- GitHub: [JuanDRdz](https://github.com/JD-R0driguez)
+- GitHub: [JD-R0driguez](https://github.com/JD-R0driguez)
 - LinkedIn: [Juan David Rodriguez](https://www.linkedin.com/in/juandavid-rodriguez/)
 
 Feel free to connect with me on the platforms above. I'm always excited to collaborate on new projects and engage with the developer community.
