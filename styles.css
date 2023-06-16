@@ -131,3 +131,28 @@ img {
     filter: invert(0%) sepia(14%) saturate(659%) hue-rotate(336deg) brightness(96%) contrast(84%);
 }
 
+@media (max-width: 500px) {
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 400px;
+        background-color: hsl(0, 0%, 100%);
+        padding: 30px;
+        border-radius: 20px;
+        border-bottom-right-radius: 30%;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    form {
+        margin-bottom: 30px;
+        align-items: center;
+    }
+
+    .date-input {
+        width: 60px;
+        padding-left: 5px;
+    }
+
+}
