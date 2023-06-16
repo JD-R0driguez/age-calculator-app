@@ -131,6 +131,24 @@ img {
     filter: invert(0%) sepia(14%) saturate(659%) hue-rotate(336deg) brightness(96%) contrast(84%);
 }
 
+
+footer {
+    font-family: 'Poppins', sans-serif;;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-style: normal;
+    margin:30px;
+    color: hsl(259, 100%, 65%)
+  }
+
+p {
+    margin-left: 5px;
+}  
+
 @media (max-width: 500px) {
 
     .content {
