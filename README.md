@@ -45,8 +45,6 @@ The Age Calculator is a user-friendly web application that allows users to calcu
 
 ### What I learned
 
-## What I Learned
-
 During the development of the Age Calculator project, I acquired valuable knowledge and skills in the following areas:
 
 - **Date Objects:** I gained proficiency in working with date objects in JavaScript, including manipulation and extracting specific information.
