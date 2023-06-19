@@ -29,7 +29,7 @@ The Age Calculator is a user-friendly web application that allows users to calcu
 
 - Responsive design: The application is designed to be responsive, ensuring a consistent user experience across various devices, including desktops, tablets, and mobile devices.
 
-![](./assets/images/Screen%20Shot%20.png)
+![](./assets/images/screen-shot%20.png)
 
 ### Demo
 
