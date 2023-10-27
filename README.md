@@ -30,10 +30,11 @@ The Age Calculator is a user-friendly web application that allows users to calcu
 - Responsive design: The application is designed to be responsive, ensuring a consistent user experience across various devices, including desktops, tablets, and mobile devices.
 
 ![](./assets/images/screen-shot.png.png)
+![](assets/images/screen-shot.png)
 
 ### Demo
 
-- Check the live code [here](https://your-live-site-url.com)
+- Check the live code [Age Calculator App](https://jd-r0driguez.github.io/age-calculator-app/)
 
 ## My process
 
